@@ -6,7 +6,7 @@ import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/event
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/eventos', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'eventos', children: [

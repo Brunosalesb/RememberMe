@@ -1,0 +1,16 @@
+<div style="height: 100vh;display: flex;background-color: whitesmoke;">
+    <div class="container login">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" style="align-self: center;">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" formControlName="senha">
+            </div>
+            <!-- <button type="submit" class="btn btn-success">Login</button> -->
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>

@@ -14,7 +14,6 @@ export class EventosService {
   constructor(private db: AngularFirestore) {
     this.eventoRef = db.collection(this.urlBase);
   }
-
   get(): AngularFirestoreCollection<Evento> {
     return this.eventoRef;
   }
