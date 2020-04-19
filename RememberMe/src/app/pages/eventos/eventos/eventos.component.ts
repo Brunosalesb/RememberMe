@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { EventosService } from 'src/app/services/eventos.service';
+import { map, subscribeOn } from "rxjs/operators";
 
 @Component({
   selector: 'app-eventos',
@@ -6,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent implements OnInit {
+  eventos: any;
 
-  constructor() { }
+  constructor(private eventoService: EventosService) { }
 
   ngOnInit(): void {
+    this.obterTodos();
+  }
+
+  obterTodos() {
+    this.eventoService.get().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({ key: c.payload.doc.id, ...c.payload.doc.data() })
+        )
+      )
+    ).subscribe(eventos => {
+      this.eventos = eventos;
+      this.eventoService.gravarEventos(eventos);
+    });
+  }
+
+  deletar(key: string) {
+    this.eventoService.delete(key)
+      .catch(err => console.log(err));
   }
 
 }

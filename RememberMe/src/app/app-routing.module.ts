@@ -8,8 +8,22 @@ import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/event
 const routes: Routes = [
   { path: '', redirectTo: '/eventos', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'eventos', component: EventosComponent},
-  { path: 'eventos/cadastro', component: EventosCadastroComponent},
+  {
+    path: 'eventos', children: [
+      {
+        path: '',
+        component: EventosComponent
+      },
+      {
+        path: 'cadastro',
+        component: EventosCadastroComponent
+      },
+      {
+        path: 'cadastro/:key',
+        component: EventosCadastroComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({

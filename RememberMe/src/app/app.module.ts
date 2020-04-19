@@ -11,6 +11,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { EventosComponent } from './pages/eventos/eventos/eventos.component';
 import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/eventos-cadastro.component';
 import { EventosService } from './services/eventos.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { EventosService } from './services/eventos.service';
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [EventosService],
   bootstrap: [AppComponent]

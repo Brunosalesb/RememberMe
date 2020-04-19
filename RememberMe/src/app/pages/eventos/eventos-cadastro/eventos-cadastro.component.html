@@ -1,2 +1,29 @@
 <app-navbar></app-navbar>
-bfgfd
+<h2 class="text-center" style="margin-top: 1%;" *ngIf="!editMode">Novo evento</h2>
+<h2 class="text-center" style="margin-top: 1%;" *ngIf="editMode">Editar evento</h2>
+<hr>
+<div class="container mt-5">
+    <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="titulo">Título<strong style="color: red;"> *</strong></label>
+            <input type="text" formControlName="titulo" class="form-control">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="titulo">Subtítulo</label>
+                <input type="text" formControlName="subTitulo" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="titulo">Data<strong style="color: red;"> *</strong></label>
+                <input type="date" formControlName="data" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="titulo">Descrição<strong style="color: red;"> *</strong></label>
+            <textarea formControlName="descricao" class="form-control" rows="6"></textarea>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="!eventoForm.valid">Salvar</button>
+        </div>
+    </form>
+</div>
