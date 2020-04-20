@@ -44,6 +44,31 @@ export class AuthService {
       );
   }
 
+  autoLogin() {
+    const userData: {
+      email: string,
+      id: string,
+      _token: string,
+      _tokenExpirationDate: string
+    } = JSON.parse(localStorage.getItem('userData'));
+    if (!userData) {
+      return;
+    }
+
+    const usuarioCarregado = new Usuario(
+      userData.email,
+      userData.id,
+      userData._token,
+      new Date(userData._tokenExpirationDate)
+    );
+
+    if (usuarioCarregado.token) {
+      this.usuario.next(usuarioCarregado);
+      const tempoExpiracao = new Date(userData._tokenExpirationDate).getTime() - new Date().getTime();
+      this.autoLogout(tempoExpiracao);
+    }
+  }
+
   login(email: string, senha: string) {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBf-ycnaCCPmd7hoXl_ikx0jurJH79XVgg', {
       email: email,

@@ -69,7 +69,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/eventos']);
       },
       errorMessage => {
-        console.log(errorMessage);
+        alert(errorMessage);
         this.error = errorMessage;
         this.spinner = false;
       }

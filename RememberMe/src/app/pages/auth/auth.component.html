@@ -21,7 +21,8 @@
                 <input type="password" class="form-control" formControlName="senha">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary">{{loginMode ? 'Login' : 'Cadastrar'}}</button>
+                <button type="submit" class="btn btn-primary"
+                    [disabled]="!authForm.valid">{{loginMode ? 'Login' : 'Cadastrar'}}</button>
                 <button style="margin-left: 4%;" type="button" class="btn btn-success"
                     (click)="alterarOperacao()">{{loginMode ? 'Cadastro' : 'Login'}}</button>
             </div>
