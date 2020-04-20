@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './pages/login/login.component';
 import { EventosComponent } from './pages/eventos/eventos/eventos.component';
 import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/eventos-cadastro.component';
+import { AuthComponent } from './pages/auth/auth.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/auth', pathMatch: 'full' },
+  { path: 'auth', component: AuthComponent },
   {
     path: 'eventos', children: [
       {

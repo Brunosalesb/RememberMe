@@ -1,0 +1,30 @@
+<div class="container" style="height: 100vh;">
+    <div class="row h-100 justify-content-center align-items-center">
+        <form class="justify-content-center" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <!-- <div>
+                <h1 style="color: black;">{{formErros}}</h1>
+            </div> -->
+            <div class="form-group" *ngIf="!loginMode">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" formControlName="nome">
+            </div>
+            <div class="form-group" *ngIf="!loginMode">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" class="form-control" formControlName="sobrenome">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" formControlName="senha">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">{{loginMode ? 'Login' : 'Cadastrar'}}</button>
+                <button style="margin-left: 4%;" type="button" class="btn btn-success"
+                    (click)="alterarOperacao()">{{loginMode ? 'Cadastro' : 'Login'}}</button>
+            </div>
+        </form>
+    </div>
+</div>
