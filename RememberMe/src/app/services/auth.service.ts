@@ -13,6 +13,7 @@ export interface AuthResponseData {
   expiresIn: string;
   localId: string;
   registered?: boolean;
+  displayName: string;
 }
 
 @Injectable({
@@ -36,6 +37,7 @@ export class AuthService {
         catchError(this.handleError),
         tap(resData => {
           this.handleAuthentication(
+            resData.displayName,
             resData.email,
             resData.localId,
             resData.idToken,
@@ -47,6 +49,7 @@ export class AuthService {
 
   autoLogin() {
     const userData: {
+      displayName: string,
       email: string,
       id: string,
       _token: string,
@@ -57,6 +60,7 @@ export class AuthService {
     }
 
     const usuarioCarregado = new Usuario(
+      userData.displayName,
       userData.email,
       userData.id,
       userData._token,
@@ -81,6 +85,7 @@ export class AuthService {
         catchError(this.handleError),
         tap(resData => {
           this.handleAuthentication(
+            resData.displayName,
             resData.email,
             resData.localId,
             resData.idToken,
@@ -107,9 +112,9 @@ export class AuthService {
     this.temporizadorExpiracaoToken = null;
   }
 
-  private handleAuthentication(email: string, usuarioId: string, token: string, tempoExpiracao: number) {
+  private handleAuthentication(displayName:string, email: string, usuarioId: string, token: string, tempoExpiracao: number) {
     const dataExpiracao = new Date(new Date().getTime() + tempoExpiracao * 1000);
-    const usuario = new Usuario(email, usuarioId, token, dataExpiracao);
+    const usuario = new Usuario(displayName, email, usuarioId, token, dataExpiracao);
     this.usuario.next(usuario);
     this.autoLogout(tempoExpiracao * 1000);
     localStorage.setItem('userData', JSON.stringify(usuario));
