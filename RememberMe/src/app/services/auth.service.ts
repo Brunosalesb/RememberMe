@@ -24,10 +24,11 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  criarConta(email: string, senha: string) {
+  criarConta(email: string, senha: string, nome: string, sobrenome: string, ) {
     return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBf-ycnaCCPmd7hoXl_ikx0jurJH79XVgg', {
       email: email,
       password: senha,
+      displayName: nome + ' ' + sobrenome,
       returnSecureToken: true
     }
     )

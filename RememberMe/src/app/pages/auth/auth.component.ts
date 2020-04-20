@@ -58,7 +58,7 @@ export class AuthComponent implements OnInit {
     if (this.loginMode) {
       authObs = this.authService.login(email, senha);
     } else {
-      authObs = this.authService.criarConta(email, senha);
+      authObs = this.authService.criarConta(email, senha, nome, sobrenome);
       this.usuariosService.cadastrarUsuario(nome, sobrenome, email);
     }
 
