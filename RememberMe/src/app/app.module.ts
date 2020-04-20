@@ -15,6 +15,7 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosService } from './services/usuarios.service';
+import { AuthGuard } from './utils/auth.guard';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { UsuariosService } from './services/usuarios.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [EventosService, AuthService, UsuariosService],
+  providers: [EventosService, AuthService, UsuariosService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

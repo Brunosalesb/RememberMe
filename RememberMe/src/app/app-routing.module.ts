@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventosComponent } from './pages/eventos/eventos/eventos.component';
 import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/eventos-cadastro.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { AuthGuard } from './utils/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: 'auth', component: AuthComponent },
   {
-    path: 'eventos', children: [
+    path: 'eventos', canActivate: [AuthGuard], children: [
       {
         path: '',
         component: EventosComponent
