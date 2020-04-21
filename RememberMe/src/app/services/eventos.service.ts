@@ -43,5 +43,6 @@ export class EventosService {
 
   gravarEventos(eventos: Evento[]) {
     this.eventos = eventos;
+    //
   }
 }
