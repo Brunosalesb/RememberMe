@@ -14,8 +14,8 @@ export class EventosService {
   constructor(private db: AngularFirestore) {
     this.eventoRef = db.collection(this.urlBase);
   }
-  get(): AngularFirestoreCollection<Evento> {
-    return this.eventoRef;
+  get(usuarioId: string): AngularFirestoreCollection<Evento> {
+    return this.db.collection('/eventos', ref => ref.where('usuarioId', '==', usuarioId));
   }
 
   getByKey(key: string) {
@@ -29,8 +29,8 @@ export class EventosService {
     return eventoFiltrado;
   }
 
-  create(evento: Evento): void {
-    this.eventoRef.add({ ...evento });
+  create(evento: Evento, usuarioId: string): void {
+    this.eventoRef.add({ ...evento, usuarioId });
   }
 
   update(key: string, evento: any): Promise<void> {

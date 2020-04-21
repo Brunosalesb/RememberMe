@@ -1,6 +1,6 @@
 export class Evento {
     key: string;
-    nome: string;
+    usuarioId: string;
     titulo: string;
     subTitulo: string;
     descricao: string;

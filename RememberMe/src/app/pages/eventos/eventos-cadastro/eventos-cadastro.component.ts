@@ -14,6 +14,7 @@ import { Evento } from 'src/app/models/evento';
 })
 export class EventosCadastroComponent implements OnInit {
   key: string;
+  usuarioLogado: any;
   editMode = false;
   eventoForm: FormGroup;
   private evento: Evento;
@@ -21,6 +22,7 @@ export class EventosCadastroComponent implements OnInit {
   constructor(private eventoService: EventosService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.usuarioLogado = JSON.parse(localStorage.getItem('userData'));
     this.route.params
       .subscribe(
         (params: Params) => {
@@ -35,7 +37,7 @@ export class EventosCadastroComponent implements OnInit {
     if (this.editMode) {
       this.eventoService.update(this.key, this.eventoForm.value)
     } else {
-      this.eventoService.create(this.eventoForm.value);
+      this.eventoService.create(this.eventoForm.value, this.usuarioLogado.id);
     }
     this.router.navigate(['/eventos'], { relativeTo: this.route });
   }

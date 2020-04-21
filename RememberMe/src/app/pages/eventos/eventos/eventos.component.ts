@@ -9,15 +9,17 @@ import { map, subscribeOn } from "rxjs/operators";
 })
 export class EventosComponent implements OnInit {
   eventos: any;
+  usuarioLogado: any;
 
   constructor(private eventoService: EventosService) { }
 
   ngOnInit(): void {
+    this.usuarioLogado = JSON.parse(localStorage.getItem('userData'));
     this.obterTodos();
   }
 
   obterTodos() {
-    this.eventoService.get().snapshotChanges().pipe(
+    this.eventoService.get(this.usuarioLogado.id).snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.doc.id, ...c.payload.doc.data() })
