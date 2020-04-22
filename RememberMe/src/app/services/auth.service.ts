@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { Usuario } from '../models/usuario';
 import { BehaviorSubject, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface AuthResponseData {
   kind: string;
@@ -26,7 +27,7 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) { }
 
   criarConta(email: string, senha: string, nome: string, sobrenome: string, ) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBf-ycnaCCPmd7hoXl_ikx0jurJH79XVgg', {
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + environment.firebaseConfig.apiKey, {
       email: email,
       password: senha,
       displayName: nome + ' ' + sobrenome,
@@ -75,7 +76,7 @@ export class AuthService {
   }
 
   login(email: string, senha: string) {
-    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBf-ycnaCCPmd7hoXl_ikx0jurJH79XVgg', {
+    return this.http.post<AuthResponseData>('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' + environment.firebaseConfig.apiKey, {
       email: email,
       password: senha,
       returnSecureToken: true

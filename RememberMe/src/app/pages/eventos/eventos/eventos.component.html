@@ -3,14 +3,19 @@
 <hr>
 <div class="container-fluid" style="padding: 02% 4%;">
     <div class="row justify-content-around">
+        <div class="text-center" *ngIf="!eventos">
+            <h6>Você possui nenhum evento cadastrado!<br>cadastre para visualiza-los aqui.</h6>
+        </div>
         <div class="col-md-4 text-center" *ngFor="let evento of eventos">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{evento.titulo}} - {{evento.data| date: 'dd/MM/yyyy'}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{evento.subTitulo}}</h6>
                     <p class="card-text">{{evento.descricao}}</p>
-                    <button class="btn btn-success" type="button" style="cursor: pointer;margin-right: 2%;" [routerLink]="['/eventos/cadastro/' + evento.key]">Editar</button>
-                    <button class="btn btn-danger" type="button" (click)="deletar(evento.key)" style="cursor: pointer;">Deletar</button>
+                    <button class="btn btn-success" type="button" style="cursor: pointer;margin-right: 2%;"
+                        [routerLink]="['/eventos/cadastro/' + evento.key]">Editar</button>
+                    <button class="btn btn-danger" type="button" (click)="deletar(evento.key)"
+                        style="cursor: pointer;">Deletar</button>
                 </div>
             </div>
         </div>
