@@ -26,7 +26,11 @@ export class EventosComponent implements OnInit {
         )
       )
     ).subscribe(eventos => {
-      this.eventos = eventos;
+      if(eventos.length != 0){
+        this.eventos = eventos;
+      } else {
+        this.eventos = null;
+      }
       this.eventoService.gravarEventos(eventos);
     });
   }
