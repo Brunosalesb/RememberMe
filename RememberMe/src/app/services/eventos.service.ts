@@ -15,7 +15,7 @@ export class EventosService {
     this.eventoRef = db.collection(this.urlBase);
   }
   get(usuarioId: string): AngularFirestoreCollection<Evento> {
-    return this.db.collection('/eventos', ref => ref.where('usuarioId', '==', usuarioId) && ref.orderBy('data'));
+    return this.db.collection('/eventos', ref => ref.where('usuarioId', '==', usuarioId));
   }
 
   getByKey(key: string) {
