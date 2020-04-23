@@ -9,7 +9,7 @@
         <div class="text-center" style="height: 100vh;" *ngIf="!loadingSpinner && !eventos">
             <h6>Você não possui eventos cadastrados!<br>cadastre para visualiza-los aqui.</h6>
         </div>
-        <div class="col-md-4 text-center" *ngFor="let evento of eventos">
+        <div class="col-md-4 text-center" style="margin-bottom: 3%;" *ngFor="let evento of eventos">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{evento.titulo}} - {{evento.data| date: 'dd/MM/yyyy'}}</h5>

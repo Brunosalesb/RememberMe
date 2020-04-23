@@ -25,7 +25,7 @@ export class EventosComponent implements OnInit {
       map(changes =>
         changes.map(c =>
           ({ key: c.payload.doc.id, ...c.payload.doc.data() })
-          )
+        )
       )
     ).subscribe(eventos => {
       if (eventos.length != 0) {
@@ -42,5 +42,4 @@ export class EventosComponent implements OnInit {
     this.eventoService.delete(key)
       .catch(err => console.log(err));
   }
-
 }
