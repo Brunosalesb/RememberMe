@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EventosComponent } from './pages/eventos/eventos/eventos.component';
 import { EventosCadastroComponent } from './pages/eventos/eventos-cadastro/eventos-cadastro.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { AuthGuard } from './utils/auth.guard';
+import { AuthGuard } from './shared/utils/auth.guard';
 
 
 const routes: Routes = [

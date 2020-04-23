@@ -11,12 +11,11 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  spinner = false;
+  loadingSpinner = false;
   authForm: FormGroup;
   loginMode = true;
   error: string = null;
   formErros: any = [];
-  teste: any = [];
 
   constructor(private authService: AuthService, private usuariosService: UsuariosService, private router: Router) { }
 
@@ -53,7 +52,7 @@ export class AuthComponent implements OnInit {
 
     let authObs: Observable<AuthResponseData>;
 
-    this.spinner = true;
+    this.loadingSpinner = true;
 
     if (this.loginMode) {
       authObs = this.authService.login(email, senha);
@@ -65,13 +64,13 @@ export class AuthComponent implements OnInit {
     authObs.subscribe(
       resData => {
         console.log(resData);
-        this.spinner = false;
+        this.loadingSpinner = false;
         this.router.navigate(['/eventos']);
       },
       errorMessage => {
         alert(errorMessage);
         this.error = errorMessage;
-        this.spinner = false;
+        this.loadingSpinner = false;
       }
     );
 

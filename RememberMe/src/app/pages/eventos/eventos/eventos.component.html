@@ -1,9 +1,12 @@
 <app-navbar></app-navbar>
 <h2 class="text-center" style="margin-top: 1%;">Meus eventos</h2>
 <hr>
+<div class="text-center">
+    <app-loading-spinner *ngIf="loadingSpinner"></app-loading-spinner>
+</div>
 <div class="container-fluid" style="padding: 02% 4%;">
     <div class="row justify-content-around">
-        <div class="text-center" *ngIf="!eventos">
+        <div class="text-center" style="height: 100vh;" *ngIf="!loadingSpinner && !eventos">
             <h6>Você não possui eventos cadastrados!<br>cadastre para visualiza-los aqui.</h6>
         </div>
         <div class="col-md-4 text-center" *ngFor="let evento of eventos">

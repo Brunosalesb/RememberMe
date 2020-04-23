@@ -1,6 +1,6 @@
 body{
   font-size: 16px;
-  background: #eee;
+  /* background: #eee; */
   color:#666;
 }
 .login-container{
@@ -23,19 +23,19 @@ body{
   color:#666;
 }
 .login-form a:hover{
-  color:#723dbe;
+  color:#1d8aff;
 }
 .forgot-link{
   font-size: 13px;
 }
 
 .form-control:focus{
-  border-color:#723dbe;
-  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
+  border-color:#0071e9;
+  box-shadow: 0 0 0 0.2rem #0071e942;
 }
 .btn-custom{
-  background: #723dbe;
-  border-color:#723dbe;
+  background: #0071e9;
+  border-color:#0071e9;
   color:#fff;
   font-size: 15px;
   font-weight: 600;
@@ -45,8 +45,8 @@ body{
 .btn-custom:hover,
 .btn-custom:active,
 .btn-custom:active:focus{
-  background: #54229d;
-  border-color: #54229d;
+  background: #025bbb;
+  border-color: #025bbb;
   color:#fff;
 }
 .btn-custom:focus{

@@ -15,7 +15,8 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosService } from './services/usuarios.service';
-import { AuthGuard } from './utils/auth.guard';
+import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinner.component';
+import { AuthGuard } from './shared/utils/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AuthGuard } from './utils/auth.guard';
     EventosComponent,
     EventosCadastroComponent,
     AuthComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,
