@@ -4,6 +4,7 @@ import { AuthService, AuthResponseData } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ToastrNotificationService } from 'src/app/shared/notifications/toastr-notification.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,10 +15,9 @@ export class AuthComponent implements OnInit {
   loadingSpinner = false;
   authForm: FormGroup;
   loginMode = true;
-  error: string = null;
   formErros: any = [];
 
-  constructor(private authService: AuthService, private usuariosService: UsuariosService, private router: Router) { }
+  constructor(private authService: AuthService, private usuariosService: UsuariosService, private router: Router, private toastrNotification: ToastrNotificationService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -68,8 +68,7 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/eventos']);
       },
       errorMessage => {
-        alert(errorMessage);
-        this.error = errorMessage;
+        this.toastrNotification.toastrNotification(errorMessage, 'Erro');
         this.loadingSpinner = false;
       }
     );

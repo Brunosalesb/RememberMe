@@ -8,19 +8,24 @@
             <hr>
             <div class="form-group" *ngIf="!loginMode">
                 <input type="text" class="form-control rounded-pill form-control-lg" formControlName="nome"
-                    placeholder="Nome">
+                    placeholder="Nome"><span *ngIf="authForm.controls.nome.invalid && authForm.controls.nome.touched"
+                    class="erroSpan">o nome é um campo obrigatório.</span>
             </div>
             <div class="form-group" *ngIf="!loginMode">
                 <input type="text" class="form-control rounded-pill form-control-lg" formControlName="sobrenome"
-                    placeholder="Sobrenome">
+                    placeholder="Sobrenome"><span
+                    *ngIf="authForm.controls.sobrenome.invalid && authForm.controls.sobrenome.touched"
+                    class="erroSpan">o sobrenome é um campo obrigatório.</span>
             </div>
             <div class="form-group">
                 <input type="email" class="form-control rounded-pill form-control-lg" formControlName="email"
-                    placeholder="Email">
+                    placeholder="Email"><span *ngIf="authForm.controls.email.invalid && authForm.controls.email.touched"
+                    class="erroSpan">o email não está no formato correto.</span>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control rounded-pill form-control-lg" formControlName="senha"
-                    placeholder="Senha">
+                    placeholder="Senha"><span *ngIf="authForm.controls.senha.invalid && authForm.controls.senha.touched"
+                    class="erroSpan">a senha deve conter pelo menos 6 digitos.</span>
             </div>
             <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase"
                 [disabled]="!authForm.valid">{{loginMode ? 'Entrar' : 'Cadastrar'}}</button>

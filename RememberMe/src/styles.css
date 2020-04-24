@@ -15,3 +15,8 @@ input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
 .toast-container .ngx-toastr{
     width: 100%;
 }
+
+.erroSpan{
+    font-size: 14px;
+    color: red;
+}
