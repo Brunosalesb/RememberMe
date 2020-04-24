@@ -16,9 +16,9 @@
                     <h6 class="card-subtitle mb-2 text-muted">{{evento.subTitulo}}</h6>
                     <p class="card-text">{{evento.descricao}}</p>
                     <button class="btn btn-success" type="button" style="cursor: pointer;margin-right: 2%;"
-                        [routerLink]="['/eventos/cadastro/' + evento.key]">Editar</button>
+                        [routerLink]="['/eventos/cadastro/' + evento.key]">Atualizar</button>
                     <button class="btn btn-danger" type="button" (click)="deletar(evento.key)"
-                        style="cursor: pointer;">Deletar</button>
+                        style="cursor: pointer;">Excluir</button>
                 </div>
             </div>
         </div>

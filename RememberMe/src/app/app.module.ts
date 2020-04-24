@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ngx-toastr";
 
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +27,7 @@ import { AuthGuard } from './shared/utils/auth.guard';
     EventosComponent,
     EventosCadastroComponent,
     AuthComponent,
-    LoadingSpinnerComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { AuthGuard } from './shared/utils/auth.guard';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({timeOut: 3000, progressBar: true, preventDuplicates: true})
   ],
   providers: [EventosService, AuthService, UsuariosService, AuthGuard],
   bootstrap: [AppComponent]

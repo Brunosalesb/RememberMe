@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { pipe } from 'rxjs';
 import { EventosComponent } from '../eventos/eventos.component';
 import { Evento } from 'src/app/models/evento';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-eventos-cadastro',
@@ -19,7 +20,7 @@ export class EventosCadastroComponent implements OnInit {
   eventoForm: FormGroup;
   private evento: Evento;
 
-  constructor(private eventoService: EventosService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private eventoService: EventosService, private route: ActivatedRoute, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.usuarioLogado = JSON.parse(localStorage.getItem('userData'));
@@ -33,11 +34,26 @@ export class EventosCadastroComponent implements OnInit {
       )
   }
 
+  toastrNotification(mensagem, titulo) {
+    switch (titulo) {
+      case "Sucesso":
+        this.toastr.success(mensagem, titulo)
+        break;
+      case "Erro":
+        this.toastr.error(mensagem, titulo)
+        break;
+      default: return null;
+        break;
+    }
+  };
+
   onSubmit() {
     if (this.editMode) {
       this.eventoService.update(this.key, this.eventoForm.value)
+      this.toastrNotification('Evento atualizado com sucesso', 'Sucesso');
     } else {
       this.eventoService.create(this.eventoForm.value, this.usuarioLogado.id);
+      this.toastrNotification('Evento cadastrado com sucesso', 'Sucesso');
     }
     this.router.navigate(['/eventos'], { relativeTo: this.route });
   }
