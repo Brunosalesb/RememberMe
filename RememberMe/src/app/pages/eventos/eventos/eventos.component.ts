@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EventosService } from 'src/app/services/eventos.service';
 import { map, subscribeOn } from "rxjs/operators";
-import { ToastrService } from 'ngx-toastr';
+import { ToastrNotificationService } from 'src/app/shared/notifications/toastr-notification.service';
 
 @Component({
   selector: 'app-eventos',
@@ -13,25 +13,12 @@ export class EventosComponent implements OnInit {
   eventos: any;
   usuarioLogado: any;
 
-  constructor(private eventoService: EventosService, private toastr: ToastrService) { }
+  constructor(private eventoService: EventosService, private toastrNotification: ToastrNotificationService) { }
 
   ngOnInit(): void {
     this.usuarioLogado = JSON.parse(localStorage.getItem('userData'));
     this.obterTodos();
   }
-
-  toastrNotification(mensagem, titulo) {
-    switch (titulo) {
-      case "Sucesso":
-        this.toastr.success(mensagem, titulo)
-        break;
-      case "Erro":
-        this.toastr.error(mensagem, titulo)
-        break;
-      default:
-        break;
-    }
-  };
 
   obterTodos() {
     this.loadingSpinner = true;
@@ -55,6 +42,6 @@ export class EventosComponent implements OnInit {
   deletar(key: string) {
     this.eventoService.delete(key)
       .catch(err => console.log(err));
-    this.toastrNotification('Evento exluído com sucesso', 'Sucesso');
+    this.toastrNotification.toastrNotification('Evento exluído com sucesso', 'Sucesso');
   }
 }
