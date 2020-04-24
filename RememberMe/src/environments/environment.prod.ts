@@ -7,6 +7,7 @@ export const environment = {
     projectId: "remeberme-4fe3b",
     storageBucket: "remeberme-4fe3b.appspot.com",
     messagingSenderId: "44999112441",
-    appId: "1:44999112441:web:36c9766219e119a372d428"
+    appId: "1:44999112441:web:36c9766219e119a372d428",
+    measurementId: "G-F4KXDJNSPH"
   }
 };
