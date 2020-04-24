@@ -47,21 +47,21 @@ export class EventosCadastroComponent implements OnInit {
 
   private initForm() {
     let titulo = '';
-    let subTitulo = '';
+    let assunto = '';
     let descricao = '';
     let data = null;
 
     if (this.editMode) {
       this.evento = this.eventoService.getByKey(this.key);
       titulo = this.evento.titulo;
-      subTitulo = this.evento.subTitulo;
+      assunto = this.evento.assunto;
       descricao = this.evento.descricao;
       data = this.evento.data;
     }
 
     this.eventoForm = new FormGroup({
       'titulo': new FormControl(titulo, Validators.required),
-      'subTitulo': new FormControl(subTitulo),
+      'assunto': new FormControl(assunto),
       'descricao': new FormControl(descricao, Validators.required),
       'data': new FormControl(data, Validators.required),
     });
