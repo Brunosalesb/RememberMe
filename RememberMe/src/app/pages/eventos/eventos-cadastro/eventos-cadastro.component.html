@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <h2 class="text-center" style="margin-top: 1%;" *ngIf="!editMode">Novo evento</h2>
-<h2 class="text-center" style="margin-top: 1%;" *ngIf="editMode">Editar evento</h2>
+<h2 class="text-center" style="margin-top: 1%;" *ngIf="editMode">Atualizar evento</h2>
 <hr>
 <div class="container mt-5">
     <form [formGroup]="eventoForm" (ngSubmit)="onSubmit()">
