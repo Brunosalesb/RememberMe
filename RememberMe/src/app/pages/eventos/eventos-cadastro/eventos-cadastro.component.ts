@@ -52,7 +52,7 @@ export class EventosCadastroComponent implements OnInit {
     let data = null;
 
     if (this.editMode) {
-      this.evento = this.eventoService.getByKey(this.key);
+      this.evento = this.eventoService.getById(this.key);
       titulo = this.evento.titulo;
       assunto = this.evento.assunto;
       descricao = this.evento.descricao;

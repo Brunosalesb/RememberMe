@@ -18,7 +18,7 @@ export class EventosService {
     return this.db.collection('/eventos', ref => ref.where('usuarioId', '==', usuarioId));
   }
 
-  getByKey(key: string) {
+  getById(key: string) {
     let eventoFiltrado;
     for (let i = 0; i < this.eventos.length; i++) {
       if (this.eventos[i].key === key) {
